@@ -1,10 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
+
   // ナビゲーションメニュー
     const navLists:string[] = ["Home","Profile","Work","Contact"] //ナビゲーションリストの配列
+    // スクロールに応じたナビゲーションの背景色のへんこう
+    const [isScroll,setIsScroll] = useState(false);
+    useEffect(()=>{
+const handleScroll = ():void =>{
+  setIsScroll(window.scrollY > 50)
+}
+window.addEventListener('scroll',handleScroll);
+    },[])
 
     // はんばーがーめにゅー
     const [isMenuOpen,setIsMenuOpen] = useState(false)
@@ -17,7 +26,7 @@ const toggleMenu = ():void =>{
     initial={{y:-100}}
     animate={{y:0}}
     transition={{type:"spring",duration:0.7,delay:0.7,damping: 9}}
-    className='bg-white md:bg-transparent fixed top-0 w-full z-50 shadow-sm md:shadow-none'>
+    className={`${isScroll ? "bg-white shadow-sm" : "bg-transparent"} fixed top-0 w-full z-50  `}>
         <div className='flex justify-between items-center container px-8 mx-auto h-16'>
             <div className='text-2xl'>Logo</div>
 
@@ -28,12 +37,12 @@ const toggleMenu = ():void =>{
               <motion.li
               whileTap={{scale:1.1}}
                key={navlist} className="relative group">
-                <a href={`#${navlist}`} className="hover:text-blue-500">
+                <a href={`#${navlist}`} className="text-gray-600 hover:text-blue-500">
                   {navlist}
                 </a>
                 {/* アンダーライン */}
             <motion.div
-  className="absolute bottom-0 left-0 h-[2px] bg-gray-500 w-0 group-hover:w-full"
+  className="absolute bottom-0 left-0 h-[2px] bg-gray-600 w-0 group-hover:w-full"
   initial={{ width: 0 }}
   whileHover={{ width: "100%" }}
   transition={{ duration: 0.3 }}

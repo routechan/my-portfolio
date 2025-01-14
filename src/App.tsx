@@ -2,7 +2,7 @@ import './App.css'
 import Header from "./components/Header"
 import {motion} from 'motion/react'
 import { Variants } from "framer-motion";
-import { Github, Mail,ExternalLink, Linkedin, Code2, Globe, Database, Server, Cpu, Cloud, Lock } from 'lucide-react';
+import { Github, Mail,ExternalLink,  Code2, Globe, Database, Server, Cpu, Cloud, Lock } from 'lucide-react';
 import { useState } from 'react';
 function App() {
 
@@ -33,9 +33,8 @@ interface Work{
   link:string
 }
 const works:Work[] = [
-  {workName:"AIバーテンダー",description:"あなたの手元にある材料、アルコールの強さ、味、今の気分を入力するとAIがオリジナルのカクテルを考え、レシピなどを教えてくれます",image:"mori-801135634_0212_D_TP_V4.jpg",link:"https://ai-bartender-67d9c.web.app/"},
-  {workName:"AIバーテンダー",description:"あなたの手元にある材料、アルコールの強さ、味、今の気分を入力するとAIがオリジナルのカクテルを考え、レシピなどを教えてくれます",image:"mori-801135634_0212_D_TP_V4.jpg",link:"https://ai-bartender-67d9c.web.app/"},
-  {workName:"AIバーテンダー",description:"あなたの手元にある材料、アルコールの強さ、味、今の気分を入力するとAIがオリジナルのカクテルを考え、レシピなどを教えてくれます",image:"mori-801135634_0212_D_TP_V4.jpg",link:"https://ai-bartender-67d9c.web.app/"}
+  {workName:"AIバーテンダー",description:"あなたの手元にある材料、アルコールの強さ、味、今の気分を入力するとAIがオリジナルのカクテルを考え、レシピなどを教えてくれます",image:"aiバーテンダー.gif",link:"https://ai-bartender-67d9c.web.app/"},
+  {workName:"みんなの日記カレンダー",description:"日記に今日あなたが頑張ったことを記録しよう",image:"calender-app.png",link:"https://diary-app-27b21.web.app/"}
 ]
 
 
@@ -67,7 +66,7 @@ const variants:Variants = {
 initial={{scale:0}}
 animate={{scale:1}}
 transition={{type:"spring",duration:0.7,delay:0.4}}
-className='relative z-20 min-h-screen flex flex-col justify-center items-center'>
+className='relative  min-h-screen flex flex-col justify-center items-center'>
 
 <h1 className='text-5xl md:text-6xl font-bold text-center '>Routechan Portfolio</h1>
 <div className='text-center mt-6 '>
@@ -80,10 +79,10 @@ className='relative z-20 min-h-screen flex flex-col justify-center items-center'
 <div className='flex flex-col md:flex-row gap-4 mt-4 text-2xl'>
   <motion.a
   whileHover={{ scale: 1.1 }}
-  href='#' className='px-6 py-3 bg-gray-800 text-white rounded-full flex items-center gap-2 hover:bg-gray-700'><Github/>Github</motion.a>
+  href='https://github.com/routechan' className='px-6 py-3 bg-gray-800 text-white rounded-full flex items-center gap-2 hover:bg-gray-700'><Github/>Github</motion.a>
   <motion.a      
   whileHover={{ scale: 1.1 }}
-  href="#contact"
+  href="#Contact"
   className="px-6 py-3 bg-sky-500 text-white rounded-full flex items-center gap-2 hover:bg-sky-400"
               >
              
@@ -113,7 +112,7 @@ className='relative z-20 min-h-screen flex flex-col justify-center items-center'
       <div className='flex-1 '>
         <img src='../public/images/mori-801135634_0212_D_TP_V4.jpg' alt='プロフィール画像' className='rounded-lg shadow-md'/>
       </div>
-      <p className='text-xl flex-1 '>石川県出身のエンジニア。高専で機械工学、技科大で材料工学を学んだのち、メーカーで温度センサーの材料開発・生産に従事。その後ITの技術にひかれ、31才でIT業界へ転職。運用・テクニカルサポートからキャリアをスタートし、AWSクラウドサーバー構築、Webページ作成、Python/djangoのツール改修など、インフラからフロントサイドまで幅広く業務を経験してきました。</p>
+      <p className='text-xl flex-1 '>東京で働く新卒Webエンジニア。好きな言語はReact。休日はバイクに乗って知らない街を散策するのが好き。</p>
      </motion.div>
      
 
@@ -154,7 +153,7 @@ className='relative z-20 min-h-screen flex flex-col justify-center items-center'
      <section id="Skill" className='bg-slate-50'>
      
 
-     <div className='relative z-20 max-w-5xl mx-auto py-32 px-8 md:px-4'>
+     <div className='relative  max-w-5xl mx-auto py-32 px-8 md:px-4'>
      <motion.h2
      variants={variants}
      initial="offscreen"
@@ -193,7 +192,7 @@ className='relative z-20 min-h-screen flex flex-col justify-center items-center'
 
      {/* Work */}
      <section id="Work" className='bg-sky-50'>
-     <div className='relative z-20 max-w-5xl mx-auto py-32 px-8 md:px-4'>
+     <div className='relative  max-w-5xl mx-auto py-32 px-8 md:px-4'>
      <motion.h2
      variants={variants}
      initial="offscreen"
@@ -205,7 +204,8 @@ className='relative z-20 min-h-screen flex flex-col justify-center items-center'
       <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
         {works.map((work,index)=>(
-          <motion.div
+          <motion.a
+          href={work.link} target="_blank"
           initial={{opacity:0,y:50}}
           whileHover={{ scale: 1.05 ,duration:0.3}}
           whileInView={{opacity:1,y:0}}
@@ -222,15 +222,13 @@ className='relative z-20 min-h-screen flex flex-col justify-center items-center'
   </div>
 
  <div className='p-4'>
-  <h3>{work.workName}</h3>
+  <h3 className='font-bold'>{work.workName}</h3>
   <p className='mt-4'>{work.description}</p>
   <div className='flex justify-end mt-4'>
-  <a href={work.link} target="_blank" className='' >
                       <ExternalLink size={20} />
-                    </a>
   </div>
  </div>
-</motion.div>
+</motion.a>
         ))}
 
 </div>
@@ -265,28 +263,28 @@ className='text-center mt-16'>
 <div
 onClick={closeModal}
  className={`${
-  isOpen ? "bg-black bg-opacity-70 z-20 w-full h-full fixed inset-0 flex flex-col justify-center items-center" : "hidden"
+  isOpen ? "bg-black bg-opacity-70 z-60 w-full h-full fixed inset-0 flex flex-col justify-center items-center" : "hidden"
 }`}>
 <div
 onClick={(e) => e.stopPropagation()}
-className='bg-slate-50 border-gray-50 border rounded-lg shadow-lg p-8 relative z-30'>
-  <h3 className='text-center'>お問い合わせ</h3>
-  <form>
-    <ul>
+className=' bg-slate-50 border-gray-50 border rounded-lg shadow-lg p-8 relative z-70'>
+  <h3 className='text-center text-2xl'>お問い合わせ</h3>
+  <form className='mt-4'>
+    <ul className='flex flex-col gap-2'>
       <li>
-    <label htmlFor='name'>名前</label>
-    <input id='name' type='text'></input>
+    <label htmlFor='name' className='block'>名前</label>
+    <input id='name' type='text' className='border-2 rounded-sm w-full'></input>
     </li>
     <li>
-    <label htmlFor='mail'>メールアドレス</label>
-    <input id='mail' type='mail'></input>
+    <label htmlFor='mail' className='block'>メールアドレス</label>
+    <input id='mail' type='mail' className='border-2 rounded-sm w-full'></input>
     </li>
     <li>
-    <label htmlFor='content'>お問い合わせ内容</label>
-    <textarea id="content"></textarea>
+    <label htmlFor='content' className='block'>お問い合わせ内容</label>
+    <textarea id="content" className=' border-2 rounded-sm w-full'></textarea>
     </li>
-<li>
-    <input type='submit' value="送信"/>
+<li className='text-center'>
+    <button className='bg-sky-500 text-white text-l p-2 rounded-md' type='submit' >送信</button>
     </li>
     </ul>
   </form>
