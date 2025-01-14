@@ -2,7 +2,7 @@ import './App.css'
 import Header from "./components/Header"
 import {motion} from 'motion/react'
 import { Variants } from "framer-motion";
-import { Github, Mail,ExternalLink,  Code2, Globe, Database, Server, Cpu, Cloud, Lock } from 'lucide-react';
+import { Github, Mail,ExternalLink} from 'lucide-react';
 import { useState } from 'react';
 function App() {
 
@@ -207,7 +207,7 @@ className='relative  min-h-screen flex flex-col justify-center items-center'>
           <motion.a
           href={work.link} target="_blank"
           initial={{opacity:0,y:50}}
-          whileHover={{ scale: 1.05 ,duration:0.3}}
+          whileHover={{ scale: 1.05 }}
           whileInView={{opacity:1,y:0}}
           transition={{
             opacity: { duration: 0.7, delay: 0.5 + index * 0.2 }, // whileInView用
